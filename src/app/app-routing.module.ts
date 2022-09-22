@@ -5,7 +5,6 @@ import {
   RouterStateSerializer,
   StoreRouterConnectingModule,
 } from '@ngrx/router-store';
-import { CustomSerializer } from '../libs/router/custom-serializer';
 import { routes } from "./app.routes";
 
 @NgModule({
@@ -16,6 +15,5 @@ import { routes } from "./app.routes";
     }),
   ],
   exports: [RouterModule],
-  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
 })
 export class AppRoutingModule {}

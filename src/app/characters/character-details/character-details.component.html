@@ -6,7 +6,7 @@
   <div class="content">
     <div class="header"><i class="icon grav"></i> {{ chac.name }}</div>
     <div class="description">
-      <div>Gender :{{ chac.gender }}</div>
+      <div>Gender: {{ chac.gender }}</div>
       <div>Height: {{ chac.height }}</div>
       <div>skin color: {{ chac.skin_color }}</div>
     </div>
@@ -15,7 +15,7 @@
     <span class="right floated"> was born in {{ chac.birth_year }} </span>
     <span>
       <i class="user icon"></i>
-      {{ chac.films?.length }} Movies
+      {{ chac.films?.length }} {{ chac.films?.length === 1 ? 'Movie' : 'Movies'}}
     </span>
   </div>
 </div>
