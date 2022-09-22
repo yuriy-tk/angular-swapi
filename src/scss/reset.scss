@@ -1,0 +1,37 @@
+body {
+  color: #333333;
+}
+
+a {
+  cursor: pointer;
+
+  &,
+  &:active,
+  &:hover,
+  &:visited {
+    color: #367bf5;
+  }
+}
+
+h2 {
+  font-size: 34px;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}

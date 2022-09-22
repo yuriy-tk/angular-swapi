@@ -1,0 +1,48 @@
+<a [routerLink]="['/people']">
+  <i class="ui icon arrow alternate circle left outline"></i>
+  Back To Characters List
+</a>
+<div class="ui card" *ngIf="activeCharacter$ | async as chac">
+  <div class="content">
+    <div class="header"><i class="icon grav"></i> {{ chac.name }}</div>
+    <div class="description">
+      <div>Gender :{{ chac.gender }}</div>
+      <div>Height: {{ chac.height }}</div>
+      <div>skin color: {{ chac.skin_color }}</div>
+    </div>
+  </div>
+  <div class="extra content">
+    <span class="right floated"> was born in {{ chac.birth_year }} </span>
+    <span>
+      <i class="user icon"></i>
+      {{ chac.films?.length }} Movies
+    </span>
+  </div>
+</div>
+
+<app-infinite-list-item-placeholder
+  *ngIf="(filmsIsLoading$ | async) || !(activeCharacterFilms$ | async)"
+  [show]="!!(filmsIsLoading$ | async)"
+></app-infinite-list-item-placeholder>
+
+<ng-container
+  *ngIf="!(filmsIsLoading$ | async) && (activeCharacterFilms$ | async)"
+>
+  <div class="ui relaxed divided list">
+    <div
+      class="item"
+      *ngFor="let film of activeCharacterFilms$ | async; let i = index"
+    >
+      <div class="content">
+        <a class="header">{{ film.title }}</a>
+        <div class="description">
+          <div><strong>Director:</strong> {{ film.director }}</div>
+          <div>
+            <strong>Release date:</strong>
+            {{ formattedDate(film.release_date) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

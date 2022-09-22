@@ -1,0 +1,30 @@
+<div class="html ui top attached segment">
+  <div class="ui top attached label">Star Wars people</div>
+
+  <app-infinite-list-item-placeholder
+    *ngIf="!(charactersList$ | async)?.length"
+    [show]="!(charactersList$ | async)?.length"
+  ></app-infinite-list-item-placeholder>
+
+  <div
+    *ngIf="(charactersList$ | async)?.length"
+    class="ui relaxed divided list"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    [fromRoot]="true"
+    [scrollWindow]="true"
+    (scrolled)="loadMoreCharacters()"
+  >
+    <app-infinite-list-item
+      class="item"
+      *ngFor="
+        let character of charactersList$ | async;
+        trackBy: charactersTrackBy;
+        let i = index
+      "
+      [character]="character"
+      (openCharacterDetails)="onOpenCharacterDetails(character.id)"
+    ></app-infinite-list-item>
+  </div>
+</div>
