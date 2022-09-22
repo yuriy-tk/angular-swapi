@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-// import { getCurrentPage } from '../reducers/index';
 import { State } from './characters.reducer';
 import { CharactersService } from '../characters.service';
 import {
